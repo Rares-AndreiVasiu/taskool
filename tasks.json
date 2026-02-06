@@ -1,0 +1,10 @@
+{
+    "total_tasks": 1,
+    "tasks": [
+        {
+            "name": "Bombaclat",
+            "wcet": 10,
+            "period": 50
+        }
+    ]
+}
