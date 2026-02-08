@@ -45,6 +45,7 @@ class TaskSchedulerApp:
         frame.pack(expand=True)
 
         self._create_task_count_label(frame)
+
         self._create_task_count_entry(frame)
 
     def _create_task_count_label(self, frame):
@@ -68,7 +69,9 @@ class TaskSchedulerApp:
     def validate_and_start(self):
         try:
             n = self._get_validated_task_count()
+
             self._initialize_task_state(n)
+
             self.show_task_entry_screen()
         except ValueError:
             messagebox.showerror("Invalid Input",
@@ -76,6 +79,7 @@ class TaskSchedulerApp:
 
     def _get_validated_task_count(self):
         n = int(self.task_count_var.get())
+
         if n <= 0:
             raise ValueError()
         return n
