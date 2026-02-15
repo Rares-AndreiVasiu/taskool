@@ -24,7 +24,7 @@ class Task:
 
     @classmethod
     def from_dict(cls, data):
-        return cls(name = data["name"], wcet = data["wcet"], period = data["period"]
+        return cls(name = data["name"], wcet = data["wcet"], period = data["period"])
 
 
 class Config:
@@ -60,8 +60,7 @@ class Config:
 
     PAD_ENTRY_LAST = (5, 20)
 
-    MESSAGES = 
-    {
+    MESSAGES = {
         "invalid_input": "Invalid Input",
         
         "positive_number": "Please enter a positive natural number",
@@ -81,8 +80,7 @@ class Config:
         "saved_count": "Saved {count} tasks to tasks.json"
     }
     
-    FILES = 
-    {
+    FILES = {
         "tasks_output": "tasks.json"
     }
 
@@ -95,7 +93,33 @@ class Screen(Enum):
     COMPLETIONO = "completion"
 
 
+class TaskValidator:
+    @staticmethod
+    def validate_task_count(count_str: str) -> int:
+        try:
+            n = int(count_str)
+            
+            if n <= 0:
+                raise ValueError(Config.MESSAGES["positive_number"])
 
+            return n
+
+        except ValueError:
+            raise ValueError(Config.MESSAGES["positive_number"])
+
+
+    @staticmethod
+    def validate_task_name(name: str) -> str:
+        name = name.strip()
+
+        if not name:
+            raise ValueError(Config.MESSAGES["task_name_empty"])
+        
+        return name
+    
+
+
+    
 class TaskSchedulerApp:
     def __init__(self, root, style):
         self.period_var = None
