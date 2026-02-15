@@ -1,6 +1,28 @@
 import json
 from tkinter import *
 from tkinter import ttk, messagebox
+from dataclasses import dataclass
+from enum import Enum
+from abc import ABC, abstractmethod
+
+@dataclass
+class Task:
+    name: str
+    
+    wcet: int
+    
+    period: int
+
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "wcet": self.wcet,
+            "period": self.period
+        }
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(name = data["name"], wcet = data["wcet"], period = data["period"]
 
 
 class TaskSchedulerApp:
