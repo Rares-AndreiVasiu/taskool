@@ -87,6 +87,13 @@ class Config:
     }
 
 
+class Screen(Enum):
+    TASK_COUNT = "task_count"
+
+    TASK_ENTRY = "task_entry"
+
+    COMPLETIONO = "completion"
+
 
 
 class TaskSchedulerApp:
