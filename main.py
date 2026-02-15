@@ -118,6 +118,22 @@ class TaskValidator:
         return name
     
 
+    @staticmethod
+    def validate_wcet(wcet_str: str) -> int:
+        try:
+            wcet = int(wcet_str)
+
+            if wcet <= 0:
+                raise ValueError(Config.MESSAGES["wcet_invalid"])
+            
+            return wcet
+        
+        except ValueError:
+            raise ValueError(Config.MESSAGES["wcet_invalid"])
+
+    
+
+
 
     
 class TaskSchedulerApp:
