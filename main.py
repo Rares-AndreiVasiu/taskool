@@ -16,13 +16,77 @@ class Task:
     def to_dict(self):
         return {
             "name": self.name,
+
             "wcet": self.wcet,
+
             "period": self.period
         }
 
     @classmethod
     def from_dict(cls, data):
         return cls(name = data["name"], wcet = data["wcet"], period = data["period"]
+
+
+class Config:
+    WINDOW_WIDTH = 500
+
+    WINDOW_HEIGHT = 400
+                   
+    WINDOW_TITLE = "Task Scheduler"
+
+    DEFAULT_STYLE = "classic"
+
+    PADDING = "20"
+
+    FONT_TITLE = ("Arial", 16, "bold")
+
+    FONT_LARGE = ("Arial", 14, "bold")
+
+    FONT_MEDIUM = ("Arial", 14)
+
+    FONT_SMALL = ("Arial", 11)
+
+    FONT_ENTRY = ("Arial", 12)
+
+    ENTRY_WIDTH = 30
+
+    BUTTON_WIDTH_SMALL = 15
+    
+    PAD_STANDARD = 20
+
+    PAD_SMALL = 10
+
+    PAD_ENTRY_STANDARD = (5, 15)
+
+    PAD_ENTRY_LAST = (5, 20)
+
+    MESSAGES = 
+    {
+        "invalid_input": "Invalid Input",
+        
+        "positive_number": "Please enter a positive natural number",
+        
+        "task_name_empty": "Task name cannot be empty",
+        
+        "wcet_invalid": "WCET must be a positive natural number",
+        
+        "period_invalid": "Period must be a positive natural number",
+        
+        "success": "Success",
+        
+        "tasks_saved": "Tasks saved successfully to tasks.json",
+        
+        "all_saved": "All tasks saved!",
+        
+        "saved_count": "Saved {count} tasks to tasks.json"
+    }
+    
+    FILES = 
+    {
+        "tasks_output": "tasks.json"
+    }
+
+
 
 
 class TaskSchedulerApp:
